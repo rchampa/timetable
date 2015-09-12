@@ -87,19 +87,22 @@ class Tabla(db.Model):
   semana_del_anio = db.Column(db.Integer)
   anio = db.Column(db.Integer)
   borrado = db.Column(db.Boolean)
+  estado = db.Column(db.Integer)
   creado_en = db.Column(db.DateTime)
   actualizado_en = db.Column(db.DateTime)
   usuario = db.relationship('Usuario', backref=db.backref('tablas', lazy='dynamic'))
   #eventos
 
    
-  def __init__(self, descripcion, semana_del_anio, anio, activo, usuario):
+  def __init__(self, descripcion, semana_del_anio, anio, usuario):
     self.descripcion = descripcion
     self.semana_del_anio = semana_del_anio
     self.anio = anio
-    self.activo = activo
+    self.borrado = False
     self.usuario = usuario
-    self.activo = True
+    self.estado = 0
+    dtutcnow = datetime.datetime.utcnow()
+    self.creado_en = dtutcnow
     
   @property
   def json(self):
@@ -110,16 +113,15 @@ class Evento(db.Model):
   __tablename__ = 'eventos'
   id_evento = db.Column(db.Integer, primary_key = True)
   id_tabla = db.Column(db.Integer, db.ForeignKey('tablas.id_tabla'))
+  fecha = db.Column(db.DateTime)
   borrado = db.Column(db.Boolean)
-  status = db.Column(db.Integer)#0 no validado, 1 validado
-  privado = db.Column(db.Integer)#0 privado, 1 publico
+  privacidad = db.Column(db.Integer)#0 privado, 1 publico
   color = db.Column(db.String(13))#RGBA
   comienza = db.Column(db.String(5))#19:00
   finaliza = db.Column(db.String(5))#20:00
   titulo = db.Column(db.String(30))
   descripcion = db.Column(db.String(100))
   url_imagen = db.Column(db.String(100))# intentaré que sean cortas
-  dia = db.Column(db.Integer)# es mejor un numero del 1 al 7
   direccion = db.Column(db.String(100))
   latitud = db.Column(db.Float)
   longitud = db.Column(db.Float)
@@ -132,18 +134,17 @@ class Evento(db.Model):
   timediff_m  = db.Column(db.String(2))
   tabla = db.relationship('Tabla', backref=db.backref('eventos', lazy='dynamic'))
   
-  def __init__(self, tabla, borrado, status, privado, color, comienza, finaliza, titulo, descripcion, url_imagen, dia, direccion, latitud, longitud, lugar, timediff_h, timediff_inmins, timediff_m):
+  def __init__(self, tabla, fecha, borrado, privacidad, color, comienza, finaliza, titulo, descripcion, url_imagen, direccion, latitud, longitud, lugar, timediff_h, timediff_inmins, timediff_m):
     self.tabla = tabla
+    self.fecha = fecha
     self.borrado = borrado
-    self.status = status
-    self.privado = privado
+    self.privacidad = privacidad
     self.color = color
     self.comienza = comienza
     self.finaliza = finaliza
     self.titulo = titulo
     self.descripcion = descripcion
     self.url_imagen = url_imagen
-    self.dia = dia
     self.direccion = direccion
     self.latitud = latitud
     self.longitud = longitud

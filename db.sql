@@ -10,7 +10,7 @@ create table administradores
 
 create table usuarios
 (
-	id_usuario int(8) AUTO_INCREMENT primary key,
+	id_usuario int(4) AUTO_INCREMENT primary key,
     email varchar(64),
     password_hash text,
     borrado boolean,
@@ -24,12 +24,13 @@ create table usuarios
 #http://localhost:5000/schedules/id_usuario/fecha
 create table tablas
 (
-	id_tabla int(8) AUTO_INCREMENT primary key,
-	id_usuario int(8),
+	id_tabla int(4) AUTO_INCREMENT primary key,
+	id_usuario int(4),
 	descripcion varchar(120),
 	semana_del_anio int, # la semana del año siempre es unica, se tendrá en cuenta como clave, al menos internamente.
 	anio int,
 	borrado boolean,
+	estado int(4),
 	creado_en datetime,
     actualizado_en datetime,
 	CONSTRAINT uc_semana_anio UNIQUE (semana_del_anio,anio),
@@ -38,20 +39,19 @@ create table tablas
 
 create table eventos
 (
-	id_evento int(8) AUTO_INCREMENT primary key,
-	id_tabla int(8),
-	#fecha datetime, no hace falta este campo, ya se tiene el id_tabla
+	id_evento int(4) AUTO_INCREMENT primary key,
+	id_tabla int(4),
+	fecha datetime, #no hace falta este campo, ya se tiene el id_tabla
 	borrado boolean,
 
-	status int(2),#0 no validado, 1 validado
-	privado int(2),#0 privado, 1 publico
+	privacidad int(2), #0 privado, 1 publico
 	color varchar(13), #RGBA
 	comienza varchar(5),#19:00
 	finaliza varchar(5),#20:00
 	titulo varchar(30),
 	descripcion varchar(100),
 	url_imagen varchar(100), # intentaré que sean cortas
-	dia int(1), # es mejor un numero del 1 al 7
+	#dia int(1), # es mejor un numero del 1 al 7, NO hace falta, por la fecha se puede deducir que día es
 	direccion varchar(100),
 	latitud DECIMAL(10, 8) NOT NULL, 
 	longitud DECIMAL(11, 8) NOT NULL,
