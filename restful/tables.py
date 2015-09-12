@@ -61,7 +61,7 @@ class TablaEventosAPI(Resource):
         f3 = Tabla.anio
         tabla = Tabla.query.filter(f1==usuario_id,f2==week_of_year, f3==fecha.year).first()
         if tabla is not None:
-            lista_eventos = Evento.query.filter(tabla.id_tabla).all()
+            lista_eventos = Evento.query.filter(Evento.id_tabla==tabla.id_tabla).all()
             
             if (lista_eventos is None) or (count(lista_eventos)==0):
                 content = { 'table': marshal(tabla, table_fields) }
