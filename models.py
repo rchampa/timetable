@@ -113,7 +113,7 @@ class Evento(db.Model):
   __tablename__ = 'eventos'
   id_evento = db.Column(db.Integer, primary_key = True)
   id_tabla = db.Column(db.Integer, db.ForeignKey('tablas.id_tabla'))
-  fecha = db.Column(db.DateTime)
+  fecha = db.Column(db.String(10))
   borrado = db.Column(db.Boolean)
   privacidad = db.Column(db.Integer)#0 privado, 1 publico
   color = db.Column(db.String(13))#RGBA
@@ -134,21 +134,16 @@ class Evento(db.Model):
   timediff_m  = db.Column(db.String(2))
   tabla = db.relationship('Tabla', backref=db.backref('eventos', lazy='dynamic'))
   
-  def __init__(self, tabla, fecha, borrado, privacidad, color, comienza, finaliza, titulo, descripcion, url_imagen, direccion, latitud, longitud, lugar, timediff_h, timediff_inmins, timediff_m):
+  def __init__(self, tabla, fecha, privacidad, color, comienza, finaliza, titulo, descripcion, timediff_h, timediff_inmins, timediff_m):
     self.tabla = tabla
     self.fecha = fecha
-    self.borrado = borrado
+    self.borrado = False
     self.privacidad = privacidad
     self.color = color
     self.comienza = comienza
     self.finaliza = finaliza
     self.titulo = titulo
     self.descripcion = descripcion
-    self.url_imagen = url_imagen
-    self.direccion = direccion
-    self.latitud = latitud
-    self.longitud = longitud
-    self.lugar = lugar
     self.timediff_h = timediff_h
     self.timediff_inmins = timediff_inmins
     self.timediff_m = timediff_m

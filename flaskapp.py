@@ -6,5 +6,4 @@ import routes
 
 import restful.users
 import restful.tables
-
-# import ws.v1.notifications
+import restful.events

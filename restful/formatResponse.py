@@ -16,7 +16,13 @@ def formatOutput(code, content={}):
                     2006:"Error: la tabla ya existe",
                     2007:"Error: la tabla no existe",
                     2008:"Tabla actualizada correctamente",
-                    
+
+
+                    3000:"El evento no existe",
+                    3001:"Información del evento",  
+                    3002:"Lista de eventos",
+                    3003:"Error: la tabla no existe",
+                    3004:"Nuevo evento",
 
                 }
 

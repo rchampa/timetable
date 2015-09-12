@@ -41,20 +41,19 @@ create table eventos
 (
 	id_evento int(4) AUTO_INCREMENT primary key,
 	id_tabla int(4),
-	fecha datetime, #no hace falta este campo, ya se tiene el id_tabla
-	borrado boolean,
-
-	privacidad int(2), #0 privado, 1 publico
-	color varchar(13), #RGBA
+	fecha varchar(10),
 	comienza varchar(5),#19:00
 	finaliza varchar(5),#20:00
+	borrado boolean,
+	privacidad int(2), #0 privado, 1 publico
+	color varchar(13), #RGBA
 	titulo varchar(30),
 	descripcion varchar(100),
 	url_imagen varchar(100), # intentaré que sean cortas
 	#dia int(1), # es mejor un numero del 1 al 7, NO hace falta, por la fecha se puede deducir que día es
 	direccion varchar(100),
-	latitud DECIMAL(10, 8) NOT NULL, 
-	longitud DECIMAL(11, 8) NOT NULL,
+	latitud DECIMAL(10, 8), 
+	longitud DECIMAL(11, 8),
 	lugar varchar(50),# descripcion del lugar
 	creado_en datetime,
     actualizado_en datetime,
@@ -66,7 +65,22 @@ create table eventos
 	FOREIGN KEY (id_tabla) REFERENCES tablas(id_tabla)
 );
 
-	
-#timediff-h: "01",
-#timediff-inmins: "6000",
-#timediff-m: "00"
+--
+-- Volcado de datos para la tabla `tablas`
+--
+
+INSERT INTO `usuarios` (`email`, `password_hash`, `borrado`, `estado`, `creado_en`, `actualizado_en`, `ultima_conexion`) VALUES
+('ricardo@gmail.com', '1111', 0, 0, '2015-09-12 18:48:25', NULL, NULL),
+('javier@gmail.com', '2222', 0, 0, '2015-09-12 18:48:36', NULL, NULL);
+
+
+INSERT INTO `tablas` (`id_usuario`, `descripcion`, `semana_del_anio`, `anio`, `borrado`, `estado`, `creado_en`, `actualizado_en`) VALUES
+(1, 'Descripción 11 bo', 35, 2015, 0, 0, NULL, '2015-09-12 19:42:22');
+
+
+INSERT INTO `eventos` (`id_tabla`, `fecha`, `comienza`, `finaliza`, `borrado`, `privacidad`, `color`, `titulo`, `descripcion`, `url_imagen`, `direccion`, `latitud`, `longitud`, `lugar`, `creado_en`, `actualizado_en`, `timediff_h`, `timediff_inmins`, `timediff_m`) VALUES
+(1, '01-09-2015', '09:00', '10:00', 0, 0, '#3498db', 'Un titulo del evento 1', 'Una descripcion del evento 1', NULL, NULL, NULL, NULL, 'Algun lugar del evento 1', '2015-09-12 22:48:10', NULL, '01', '6000', '00'),
+(1, '02-09-2015', '09:00', '10:00', 0, 0, '#3498db', 'Un titulo del evento 2', 'Una descripcion del evento 2', NULL, NULL, NULL, NULL, 'Algun lugar del evento 2', '2015-09-12 22:51:07', NULL, '01', '6000', '00');
+
+
+
