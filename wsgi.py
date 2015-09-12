@@ -5,7 +5,7 @@ import os
 if os.environ.get('OPENSHIFT_MYSQL_DB_URL') is not None:
   #virtenv = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/'
   virtenv = os.path.join(os.environ.get('OPENSHIFT_PYTHON_DIR','.'), 'virtenv')
-  virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
+  virtualenv = os.path.join(virtenv, 'venv/bin/activate_this.py')
 
   with open(virtualenv, 'rb') as exec_file:
     file_contents = exec_file.read()
