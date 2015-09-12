@@ -40,7 +40,7 @@ create table eventos
 (
 	id_evento int(8) AUTO_INCREMENT primary key,
 	id_tabla int(8),
-	fecha datetime,
+	#fecha datetime, no hace falta este campo, ya se tiene el id_tabla
 	borrado boolean,
 
 	status int(2),#0 no validado, 1 validado

@@ -86,7 +86,9 @@ class Tabla(db.Model):
   descripcion = db.Column(db.String(120))
   semana_del_anio = db.Column(db.Integer)
   anio = db.Column(db.Integer)
-  activo = db.Column(db.Boolean)
+  borrado = db.Column(db.Boolean)
+  creado_en = db.Column(db.DateTime)
+  actualizado_en = db.Column(db.DateTime)
   usuario = db.relationship('Usuario', backref=db.backref('tablas', lazy='dynamic'))
   #eventos
 
@@ -108,7 +110,6 @@ class Evento(db.Model):
   __tablename__ = 'eventos'
   id_evento = db.Column(db.Integer, primary_key = True)
   id_tabla = db.Column(db.Integer, db.ForeignKey('tablas.id_tabla'))
-  fecha = db.Column(db.DateTime)
   borrado = db.Column(db.Boolean)
   status = db.Column(db.Integer)#0 no validado, 1 validado
   privado = db.Column(db.Integer)#0 privado, 1 publico
@@ -131,9 +132,8 @@ class Evento(db.Model):
   timediff_m  = db.Column(db.String(2))
   tabla = db.relationship('Tabla', backref=db.backref('eventos', lazy='dynamic'))
   
-  def __init__(self, tabla, fecha, borrado, status, privado, color, comienza, finaliza, titulo, descripcion, url_imagen, dia, direccion, latitud, longitud, lugar, timediff_h, timediff_inmins, timediff_m):
+  def __init__(self, tabla, borrado, status, privado, color, comienza, finaliza, titulo, descripcion, url_imagen, dia, direccion, latitud, longitud, lugar, timediff_h, timediff_inmins, timediff_m):
     self.tabla = tabla
-    self.fecha = fecha
     self.borrado = borrado
     self.status = status
     self.privado = privado

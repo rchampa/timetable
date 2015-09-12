@@ -7,8 +7,9 @@ def formatOutput(code, content={}):
                     1003:"Nuevo usuario",
                    
 
-                    2000:"",
-                    2001:"",
+                    2000:"Datos de la tabla y sus eventos",
+                    2001:"Datos de la tabla pero sin eventos",
+                    2002:"No hay tablas para esta fecha",
                     
 
                 }
