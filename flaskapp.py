@@ -4,5 +4,7 @@ from myglobal import app
 
 import routes
 
-# import ws.v1.users
+import restful.users
+
+
 # import ws.v1.notifications

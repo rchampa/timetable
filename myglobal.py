@@ -24,6 +24,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = MYSQL_URI
 
 from flask_restful import Api
 api = Api(app, catch_all_404s=True)
+#api = Api(app, catch_all_404s=True)
 
 
 from flask_httpauth import HTTPBasicAuth

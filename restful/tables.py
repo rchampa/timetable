@@ -36,7 +36,7 @@ class TodoSimple(Resource):
 	        	}
 
 
-api.add_resource(TodoSimple, '/schedules/<int:usuario_id>/<string:tabla_id>')
+api.add_resource(TodoSimple, '/tables/<int:usuario_id>/<string:tabla_id>')
 
 if __name__ == '__main__':
     app.run(debug=True)
