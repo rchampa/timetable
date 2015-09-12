@@ -23,7 +23,7 @@ class UsuarioAPI(Resource):
         else:
             return formatOutput(1002)
 
-api.add_resource(UsuarioAPI, '/api/users/<int:usuario_id>', endpoint = 'user')
+api.add_resource(UsuarioAPI, '/users/<int:usuario_id>', endpoint = 'user')
 
 class UsuariosAPI(Resource):
 
@@ -48,5 +48,5 @@ class UsuariosAPI(Resource):
         return formatOutput(1003), 201
 
         
-api.add_resource(UsuariosAPI, '/api/users', endpoint = 'users')
+api.add_resource(UsuariosAPI, '/users', endpoint = 'users')
 
