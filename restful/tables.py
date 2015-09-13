@@ -30,7 +30,7 @@ tables_fields = {
 events_fields = {
     'id_evento': fields.Integer,
     'id_tabla': fields.Integer,
-    'fecha': fields.DateTime(dt_format='iso8601'),
+    'fecha': fields.String,
     'borrado': fields.Boolean,
     'privacidad':fields.Integer,
     'color': fields.String,
@@ -63,15 +63,15 @@ class TablaEventosAPI(Resource):
         if tabla is not None:
             lista_eventos = Evento.query.filter(Evento.id_tabla==tabla.id_tabla).all()
             
-            if (lista_eventos is None) or (count(lista_eventos)==0):
-                content = { 'table': marshal(tabla, table_fields) }
-                return formatOutput(2001,content)
-            else:
-                content =   { 
-                                'table' : marshal(tabla, table_fields),
-                                'events': list(map(lambda t: marshal(t, events_fields), lista_eventos))
-                            }
-                return formatOutput(2000, content)
+            # if (lista_eventos is None) or (lista_eventos.count(Evento.id_evento)==0):
+            #     content = { 'table': marshal(tabla, tables_fields) }
+            #     return formatOutput(2001,content)
+            # else:
+            content =   { 
+                            'table' : marshal(tabla, tables_fields),
+                            'events': list(map(lambda t: marshal(t, events_fields), lista_eventos))
+                        }
+            return formatOutput(2000, content)
 
         else:
             return formatOutput(2002)
@@ -90,6 +90,7 @@ class TablaEventosAPI(Resource):
 
 
 api.add_resource(TablaEventosAPI, '/<int:usuario_id>/<string:tabla_fecha>')
+
 
 class TablasAPI(Resource):
     def __init__(self):
