@@ -11,6 +11,10 @@ body {
   font-size: 15px;
   line-height: 150%;
 }
+code {
+  display: block;
+  white-space: pre-wrap;
+}
 
 xmp, textarea {
   display: none;
@@ -35,12 +39,12 @@ img {
 .table {
   width: auto;
 }
-.code {
+/*code {
   white-space:pre;
   white-space:pre-wrap;
   word-break:break-all;
   word-wrap:break-word;
-}
+}*/
 
 /*******************************************************************
 
