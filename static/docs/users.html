@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<title>Documentación: Users</title>
+
+<xmp theme="united" style="display:none;">
+# How to use
+##### Nota: Aún quedan nuevas acciones por implementar...
+
+### API
+La siguiente tabla resume todas las acciones posibles para los usuarios.
+
+<table class="data">
+<tr><th>HTTP Method</th><th>URI</th><th>Action</th></tr>
+<tr><td>GET</td><td>http://timetable-ttv1.rhcloud.com/users</td><td>Lista de usuarios</td></tr>
+<tr><td>GET</td><td>http://timetable-ttv1.rhcloud.com/users/id_usuario</td><td>Información del usuario</td></tr>
+<tr><td>POST</td><td>http://timetable-ttv1.rhcloud.com/users</td><td>Crea un nuevo usuario</td></tr>
+<tr><td>PUT</td><td>http://timetable-ttv1.rhcloud.com/users/id_usuario</td><td>Actualiza un usuario</td></tr>
+</table>
+
+### POST: crea un nuevo usuario
+<table class="data">
+<tr><th>Dato</th><th>Tipo</th><th>Obligatorio</th></tr>
+<tr><td>email</td><td>String</td><td>Sí</td></tr>
+<tr><td>password</td><td>String</td><td>Sí</td></tr>
+</table>
+
+####Ejemplo
+`
+{
+    "email":"carlos@mail.com",
+    "password":"1234"
+}
+`
+
+<br>
+### PUT: actualiza un usuario
+<table class="data">
+<tr><th>Dato</th><th>Tipo</th><th>Obligatorio</th></tr>
+<tr><td>email</td><td>String</td><td>No</td></tr>
+<tr><td>borrado</td><td>boolean</td><td>No</td></tr>
+<tr><td>estado</td><td>int</td><td>No</td></tr>
+</table>
+
+####Ejemplo
+`
+{
+    "email":"nuevo@mail.com",
+    "borrado":true,
+    "estado":1
+}`
+
+
+<br>
+### Códigos de las respuestas
+La siguiente tabla resume todos los mensajes y sus respectivos codigos.
+
+<table class="data">
+<tr><th>Código</th><th>Mensaje</th></tr>
+<tr><td>1000</td><td>Lista de usuarios</td></tr>
+<tr><td>1001</td><td>Datos del usuario</td></tr>
+<tr><td>1002</td><td>El usuario no existe</td></tr>
+<tr><td>1003</td><td>Nuevo usuario</td></tr>
+</table>
+
+</xmp>
+
+<script src="strapdown.js"></script>
+</html>
+
+

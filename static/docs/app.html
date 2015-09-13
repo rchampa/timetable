@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<title>Documentación: Consultar una tabla y sus eventos de un usuario</title>
+
+
+
+<xmp theme="united" style="display:none;">
+# How to use
+##### Nota: Aún quedan nuevas acciones por implementar...
+
+### API
+La siguiente tabla resume todas las acciones posibles para los eventos.
+
+<table class="data">
+<tr><th>HTTP Method</th><th>URI</th><th>Action</th></tr>
+<tr><td>GET</td><td>http://timetable-ttv1.rhcloud.com/int:usuario_id/string:fecha</td><td>Tabla y la lista de eventos del usuario</td></tr>
+</table>
+
+
+
+
+
+####Ejemplo de la respuesta a la consulta
+`
+{
+  "code": 2000,
+  "content": {
+    "events": [
+      {
+        "actualizado_en": null,
+        "borrado": false,
+        "color": "#3498db",
+        "comienza": "09:00",
+        "creado_en": "2015-09-12T22:48:10",
+        "descripcion": "Una descripcion del evento 1",
+        "direccion": null,
+        "fecha": "01-09-2015",
+        "finaliza": "10:00",
+        "id_evento": 1,
+        "id_tabla": 1,
+        "latitud": null,
+        "longitud": null,
+        "lugar": "Algun lugar del evento 1",
+        "privacidad": 0,
+        "timediff_h": "01",
+        "timediff_inmins": "6000",
+        "timediff_m": "00",
+        "titulo": "Un titulo del evento 1",
+        "url_imagen": null
+      },
+      {
+        "actualizado_en": null,
+        "borrado": false,
+        "color": "#3498db",
+        "comienza": "09:00",
+        "creado_en": "2015-09-12T22:51:07",
+        "descripcion": "Una descripcion del evento 2",
+        "direccion": null,
+        "fecha": "02-09-2015",
+        "finaliza": "10:00",
+        "id_evento": 2,
+        "id_tabla": 1,
+        "latitud": null,
+        "longitud": null,
+        "lugar": "Algun lugar del evento 2",
+        "privacidad": 0,
+        "timediff_h": "01",
+        "timediff_inmins": "6000",
+        "timediff_m": "00",
+        "titulo": "Un titulo del evento 2",
+        "url_imagen": null
+      }
+    ],
+    "table": {
+      "actualizado_en": "2015-09-13T09:00:22",
+      "anio": 2015,
+      "borrado": false,
+      "creado_en": null,
+      "descripcion": "Descripción 11 meh",
+      "estado": 0,
+      "id_tabla": 1,
+      "id_usuario": 1,
+      "semana_del_anio": 35
+    }
+  },
+  "message": "Datos de la tabla y sus eventos"
+}
+`
+
+
+<br>
+### Códigos de las respuestas
+La siguiente tabla resume todos los mensajes y sus respectivos codigos.
+
+<table class="data">
+<tr><th>Código</th><th>Mensaje</th></tr>
+<tr><td>2000</td><td>Datos de la tabla y sus eventos</td></tr>
+<tr><td>2002</td><td>No hay tablas para esta fecha</td></tr>
+</table>
+
+</xmp>
+
+<script src="strapdown.js"></script>
+</html>
+
+
+

@@ -49,6 +49,7 @@ create table eventos
 	color varchar(13), #RGBA
 	titulo varchar(30),
 	descripcion varchar(100),
+	#opcionales
 	url_imagen varchar(100), # intentaré que sean cortas
 	#dia int(1), # es mejor un numero del 1 al 7, NO hace falta, por la fecha se puede deducir que día es
 	direccion varchar(100),

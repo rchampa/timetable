@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<title>Documentación: Tables</title>
+
+<xmp theme="united" style="display:none;">
+# How to use
+##### Nota: Aún quedan nuevas acciones por implementar...
+
+### API
+La siguiente tabla resume todas las acciones posibles para los tablas.
+
+<table class="data">
+<tr><th>HTTP Method</th><th>URI</th><th>Action</th></tr>
+<tr><td>GET</td><td>http://timetable-ttv1.rhcloud.com/tables</td><td>Lista de tablas</td></tr>
+<tr><td>GET</td><td>http://timetable-ttv1.rhcloud.com/tables/id_tabla</td><td>Información de la tabla</td></tr>
+<tr><td>POST</td><td>http://timetable-ttv1.rhcloud.com/tables</td><td>Crea un nueva tabla</td></tr>
+<tr><td>PUT</td><td>http://timetable-ttv1.rhcloud.com/tables/id_tabla</td><td>Actualiza una tabla</td></tr>
+</table>
+
+### POST: crea una nueva tabla
+<table class="data">
+<tr><th>Dato</th>		<th>Tipo</th>		<th>Obligatorio</th></tr>
+<tr><td>id_usuario</td>	<td>int	</td>		<td>Sí</td></tr>
+<tr><td>descripcion</td><td>boolean</td>	<td>Sí</td></tr>
+<tr><td>fecha</td>		<td>String</td>		<td>Sí</td></tr>
+</table>
+
+####Ejemplo
+`
+{
+    "id_usuario": 3,
+    "descripcion": "Descripción 31",
+    "fecha": "10-09-2015"
+}
+`
+
+<br>
+### PUT: actualiza una tabla
+<table class="data">
+<tr><th>Dato</th><th>Tipo</th><th>Obligatorio</th></tr>
+<tr><td>descripcion</td><td>String</td><td>No</td></tr>
+<tr><td>borrado</td><td>boolean</td><td>No</td></tr>
+<tr><td>estado</td><td>int</td><td>No</td></tr>
+</table>
+
+####Ejemplo
+`
+{
+    "borrado": false,
+    "estado":1,
+    "descripcion": "Descripción 31 meh"
+}
+`
+
+
+<br>
+### Códigos de las respuestas
+La siguiente tabla resume todos los mensajes y sus respectivos codigos.
+
+<table class="data">
+<tr><th>Código</th><th>Mensaje</th></tr>
+<tr><td>2000</td><td>Datos de la tabla y sus eventos</td></tr>
+<tr><td>2001</td><td>Datos de la tabla pero sin eventos</td></tr>
+<tr><td>2002</td><td>No hay tablas para esta fecha</td></tr>
+<tr><td>2003</td><td>Datos de todas las tablas</td></tr>
+<tr><td>2004</td><td>Error: el usuario no existe</td></tr>
+<tr><td>2005</td><td>Nueva tabla dada de alta</td></tr>
+<tr><td>2006</td><td>Error: la tabla ya existe</td></tr>
+<tr><td>2007</td><td>Error: la tabla no existe</td></tr>
+<tr><td>2008</td><td>Tabla actualizada correctamente</td></tr>
+</table>
+
+</xmp>
+
+<script src="strapdown.js"></script>
+</html>
+
+
+
