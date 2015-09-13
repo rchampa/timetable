@@ -2,10 +2,6 @@
 
 from flaskapp import app as application
 
-#
-# Setup for apache mod_wsgi
-# Check details in https://github.com/openshift-quickstart/flask-base/blob/master/app.py
-#
 if __name__ == '__main__':
     from wsgiref.simple_server import make_server
     httpd = make_server('0.0.0.0', 5000, application)

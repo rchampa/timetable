@@ -75,7 +75,8 @@ INSERT INTO `usuarios` (`email`, `password_hash`, `borrado`, `estado`, `creado_e
 
 
 INSERT INTO `tablas` (`id_usuario`, `descripcion`, `semana_del_anio`, `anio`, `borrado`, `estado`, `creado_en`, `actualizado_en`) VALUES
-(1, 'Descripción 11 bo', 35, 2015, 0, 0, NULL, '2015-09-12 19:42:22');
+(1, 'Descripción 11 bo', 35, 2015, 0, 0, '2015-09-12 19:00:22', '2015-09-12 19:42:22'),
+(1, 'Descripción 12', 36, 2015, 0, 0, '2015-09-12 23:57:22', NULL);
 
 
 INSERT INTO `eventos` (`id_tabla`, `fecha`, `comienza`, `finaliza`, `borrado`, `privacidad`, `color`, `titulo`, `descripcion`, `url_imagen`, `direccion`, `latitud`, `longitud`, `lugar`, `creado_en`, `actualizado_en`, `timediff_h`, `timediff_inmins`, `timediff_m`) VALUES
