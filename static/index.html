@@ -1,8 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Demo</title>
-</head>
-<body>
-	Hellooooooooo wooorld!
-</body>
+  <head>
+    <meta charset="UTF-8">
+      <title>Tasked - Login</title>
+      <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet prefetch">
+        <link href="css/style.css" rel="stylesheet"></link>
+      </link>
+    </meta>
+  </head>
+  <body>
+    <div class="login">
+      <div class="login_title">
+        <h1 class="logo">Tasked</h1>
+      </div>
+      <div class="login_fields">
+        <div class="login_fields__user">
+          <div class="icon">
+            <img src="img/user_icon_copy.png"/>
+          </div>
+          <input placeholder="Usuario" type="text">
+            <div class="validation">
+              <img src="img/tick.png"/>
+            </div>
+          </input>
+        </div>
+        <div class="login_fields__password">
+          <div class="icon">
+            <img src="img/lock_icon_copy.png"/>
+          </div>
+          <input placeholder="Contraseña" type="password">
+            <div class="validation">
+              <img src="img/tick.png"/>
+            </div>
+          </input>
+        </div>
+        <div class="login_fields__submit">
+          <input type="submit" value="Acceder">
+            <div class="forgot">
+              <a href="#">¿Olvidaste tu clave?</a>
+            </div>
+          </input>
+        </div>
+      </div>
+      <div class="disclaimer">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper laoreet placerat. Nullam semper auctor justo, rutrum posuere odio vulputate nec.</p>
+      </div>
+    </div>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

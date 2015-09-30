@@ -1,0 +1,33 @@
+!!! 5
+%html
+  %head
+    %meta{:charset => "UTF-8"}
+      %title Tasked - Login
+      %link{:href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css", :rel => "stylesheet prefetch"}
+        %link{:href => "css/style.css", :rel => "stylesheet"}
+  %body
+    .login
+      .login_title
+        %h1.logo Tasked
+      .login_fields
+        .login_fields__user
+          .icon
+            %img{:src => "img/user_icon_copy.png"}/
+          %input{:placeholder => "Usuario", :type => "text"}
+            .validation
+              %img{:src => "img/tick.png"}/
+        .login_fields__password
+          .icon
+            %img{:src => "img/lock_icon_copy.png"}/
+          %input{:placeholder => "Contraseña", :type => "password"}
+            .validation
+              %img{:src => "img/tick.png"}/
+        .login_fields__submit
+          %input{:type => "submit", :value => "Acceder"}
+            .forgot
+              %a{:href => "#"} ¿Olvidaste tu clave?
+      .disclaimer
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper laoreet placerat. Nullam semper auctor justo, rutrum posuere odio vulputate nec.
+    %script{:src => "http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"}
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"}
+    %script{:src => "js/main.js"}
