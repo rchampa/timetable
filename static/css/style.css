@@ -1,4 +1,51 @@
 @import url(http://fonts.googleapis.com/css?family=Gudea:400,700);
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+input {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
 body {
   -webkit-perspective: 800px;
   perspective: 800px;
@@ -17,6 +64,9 @@ body p {
   color: #5B5E6F;
   font-size: 10px;
   text-align: left;
+}
+.hide{
+  display: none;
 }
 h1.logo{
   width: 100%;
@@ -64,22 +114,24 @@ h1.logo{
   text-align: left;
   font-size: 16px;
 }
-.login_fields {
+.login_fields{
   height: 208px;
   position: absolute;
   left: 0;
 }
-.login_fields .icon {
+.login_fields .icon,
+.register_fields .icon {
   position: absolute;
   z-index: 1;
   left: 36px;
   top: 8px;
   opacity: .5;
 }
-.login_fields input[type='password'] {
+.login_fields input[type='password'], .register_fields input[type='password'] {
   color: #2e81b7 !important;
 }
-.login_fields input[type='text'], .login_fields input[type='password'] {
+.login_fields input[type='text'], .login_fields input[type='password'],
+.register_fields input[type='text'], .register_fields input[type='password']  {
   color: #afb1be;
   width: 190px;
   margin-top: -2px;
@@ -94,7 +146,7 @@ h1.logo{
   font-family: 'Gudea', sans-serif;
   box-shadow: none;
 }
-.login_fields__user, .login_fields__password {
+.login_fields__user, .login_fields__password, .login_fields__mail {
   position: relative;
 }
 .login_fields__submit {
@@ -113,6 +165,25 @@ h1.logo{
 }
 .login_fields__submit .forgot a {
   color: #606479;
+}
+.register_fields__submit {
+    position: relative;
+    top: 35px;
+    left: 0;
+    width: 80%;
+    right: 0;
+    margin: auto;
+    text-align: center;
+}
+.register_fields__submit input[type='submit'] {
+  border-radius: 50px;
+  background: transparent;
+  padding: 10px 50px;
+  border: 2px solid #2e81b7;
+  color: #2e81b7;
+  text-transform: uppercase;
+  font-size: 11px;
+  display: inline-block;
 }
 .login_fields__submit input {
   border-radius: 50px;
@@ -139,4 +210,24 @@ h1.logo{
   transition-property: background,color;
   -webkit-transition-duration: .2s;
   transition-duration: .2s;
+}
+.register_fields{
+  display: none;
+  height: 208px;
+  position: absolute;
+  left: 0;  
+}
+#back-to-login{
+  display: none;
+  text-decoration: none;
+  font-style: inherit;
+  color: #2E81B7;  
+}
+#register{
+  text-decoration: none;
+  font-style: inherit;
+  color: #2E81B7;
+}
+div.disclaimer > p{
+  text-align: left;
 }
