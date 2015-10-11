@@ -24,6 +24,13 @@ def formatOutput(code, content={}):
                     3003:"Error: la tabla no existe",
                     3004:"Nuevo evento",
 
+
+                    4000,"Registrado correctamente",
+                    4001,"Error al registrar",
+
+                    5000,"Login ok",
+                    5001,"Nombre de usuario o password incorrecto",
+
                 }
 
     return {
