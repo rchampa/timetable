@@ -25,11 +25,11 @@ def formatOutput(code, content={}):
                     3004:"Nuevo evento",
 
 
-                    4000,"Registrado correctamente",
-                    4001,"Error al registrar",
+                    4000:"Registrado correctamente",
+                    4001:"Error al registrar",
 
-                    5000,"Login ok",
-                    5001,"Nombre de usuario o password incorrecto",
+                    5000:"Login ok",
+                    5001:"Nombre de usuario o password incorrecto",
 
                 }
 
