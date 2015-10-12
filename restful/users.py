@@ -1,8 +1,8 @@
-from myglobal import app,db,api,auth
-from flask import Flask, request
+from myglobal import app,db,api
 from flask_restful import Resource, Api, Resource, reqparse, fields, marshal
 from models import Usuario
 from restful.formatResponse import formatOutput
+from flask_jwt import jwt_required
 
 users_fields = {
     'id_usuario': fields.Integer,
@@ -26,6 +26,12 @@ class UsuarioAPI(Resource):
 api.add_resource(UsuarioAPI, '/users/<int:usuario_id>', endpoint = 'user')
 
 class UsuariosAPI(Resource):
+    from flask_jwt import JWTError
+    try:
+        decorators = [jwt_required()]
+    except JWTError as e:
+        lol = "lol"
+
 
     def __init__(self):
         self.reqparse = reqparse.RequestParser()

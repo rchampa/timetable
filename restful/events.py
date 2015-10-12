@@ -1,4 +1,4 @@
-from myglobal import app,db,api,auth
+from myglobal import app,db,api
 from flask import Flask, request
 from flask_restful import Resource, Api, Resource, reqparse, fields, marshal
 from models import Usuario,Tabla,Evento

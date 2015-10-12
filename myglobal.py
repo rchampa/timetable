@@ -22,26 +22,22 @@ db = SQLAlchemy(app)
 from constants import MYSQL_URI
 app.config['SQLALCHEMY_DATABASE_URI'] = MYSQL_URI
 
-from flask_restful import Api
-api = Api(app, catch_all_404s=True)
-#api = Api(app, catch_all_404s=True)
+from my_flask_restful.FlaskRestfulJwtAPI import FlaskRestfulJwtAPI
+api = FlaskRestfulJwtAPI(app, catch_all_404s=True)
+# api = FlaskRestfulJwtAPI(app)
+# from flask_restful import Api
+# api = Api(app, catch_all_404s=True)
 
+#import my_jwt
 
-from flask_httpauth import HTTPBasicAuth
-auth = HTTPBasicAuth()
-import datetime
-from models import Administrador
+# from flask import jsonify
+# from flask_jwt import JWTError
+#
+# def handle_user_exception_again(e):
+#     if isinstance(e, JWTError):
+#         data = {'status_code': 1132, 'message': "JWTError already exists."}
+#         return jsonify(data), e.status_code, e.headers
+#     return e
+#
+# app.handle_user_exception = handle_user_exception_again
 
-@auth.verify_password
-def verify_pw(username, password):
-	admin = Administrador.query.filter_by(email = username).first()
-	admin.ultima_conexion = datetime.datetime.utcnow()
-	db.session.add(admin)
-	db.session.commit()
-	return (admin and admin.check_password(password) and (admin.estado==1 or admin.estado==2))
-
-@auth.error_handler
-def unauthorized():
-	from flask import make_response, jsonify
-	return make_response(jsonify( { 'message': 'Unauthorized access' } ), 403)
-	# return 403 instead of 401 to prevent browsers from displaying the default auth dialog

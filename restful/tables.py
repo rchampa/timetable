@@ -1,9 +1,10 @@
-from myglobal import app,db,api,auth
+from myglobal import app,db,api
 from flask import Flask, request
 from flask_restful import Resource, Api, Resource, reqparse, fields, marshal
 from models import Usuario,Tabla,Evento
 from restful.formatResponse import formatOutput
 from datetime import datetime
+from flask_jwt import jwt_required
 
 users_fields = {
     'id_usuario': fields.Integer,
@@ -51,6 +52,8 @@ events_fields = {
 }
 
 class TablaEventosAPI(Resource):
+
+    decorators = [jwt_required()]
     def get(self, usuario_id, tabla_fecha):
         #print(str(datetime.strptime('30-08-2015', '%d-%m-%Y')))
         fecha = datetime.strptime(tabla_fecha, '%d-%m-%Y')
