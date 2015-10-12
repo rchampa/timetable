@@ -26,12 +26,8 @@ class UsuarioAPI(Resource):
 api.add_resource(UsuarioAPI, '/users/<int:usuario_id>', endpoint = 'user')
 
 class UsuariosAPI(Resource):
-    from flask_jwt import JWTError
-    try:
-        decorators = [jwt_required()]
-    except JWTError as e:
-        lol = "lol"
 
+    decorators = [jwt_required()]
 
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
