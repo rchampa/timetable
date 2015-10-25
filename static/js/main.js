@@ -55,7 +55,7 @@ $('#register').click(function(){
     var dataString = 'username='+username+'&password='+password+'&mail='+mail;
 
     var usuario = {
-            username: username,
+            email: email,
             password: password
     }
 

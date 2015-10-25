@@ -7,3 +7,4 @@ import routes
 import restful.users
 import restful.tables
 import restful.events
+import restful.register

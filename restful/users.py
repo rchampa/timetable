@@ -27,7 +27,7 @@ api.add_resource(UsuarioAPI, '/users/<int:usuario_id>', endpoint = 'user')
 
 class UsuariosAPI(Resource):
 
-    decorators = [jwt_required()]
+    # decorators = [jwt_required()]
 
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
@@ -40,14 +40,14 @@ class UsuariosAPI(Resource):
         content = { 'users': list(map(lambda t: marshal(t, users_fields), lista_usuarios)) }
         return formatOutput(1000,content)
 
-    def post(self):
-        args = self.reqparse.parse_args()
-        email = args['email']
-        password = args['password'];
-        nuevo_usuario = Usuario(email,password)
-        db.session.add(nuevo_usuario)
-        db.session.commit()
-        return formatOutput(1003), 201
+    # def post(self):
+    #     args = self.reqparse.parse_args()
+    #     email = args['email']
+    #     password = args['password'];
+    #     nuevo_usuario = Usuario(email,password)
+    #     db.session.add(nuevo_usuario)
+    #     db.session.commit()
+    #     return formatOutput(1003), 201
 
         
 api.add_resource(UsuariosAPI, '/users', endpoint = 'users')
