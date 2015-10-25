@@ -63,7 +63,7 @@ $('#register').click(function(){
 		$.ajax({
 	        type: "POST",
 	        url: "http://timetable-ttv1.rhcloud.com/registration",//url login -> rhcloud.com
-	        dataType: 'json',
+	        dataType: 'jsonp',//croos domain
 	        contentType: "application/json; charset=utf-8",
 	        data: usuario,//data i'm sending to the login url
 	        cache: false,
@@ -77,7 +77,10 @@ $('#register').click(function(){
 				 $("#register").val('Enviar')
 				 $("#error").html("<span style='color:#cc0000'>Error:</span> Se produjo un error, inténtelo más tarde. ");
 	            }
-	        }
+	        },
+            error:function(){
+                 alert("Error");
+            }
 	    });
 	}
 	
