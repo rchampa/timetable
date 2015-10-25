@@ -53,11 +53,18 @@ $('.register_fields').click(function(){
 	var mail=$(".register_fields #mail").val();
     var dataString = 'username='+username+'&password='+password+'&mail='+mail;
 
+    var usuario = {
+            username: username,
+            password: password
+    }
+
 	if($.trim(username).length>0 && $.trim(password).length>0 && $.trim(email).length>0){	
 		$.ajax({
 	        type: "POST",
-	        url: "",//url login -> rhcloud.com
-	        data: dataString,//data i'm sending to the login url
+	        url: "http://timetable-ttv1.rhcloud.com/users",//url login -> rhcloud.com
+	        dataType: 'json',
+	        contentType: "application/json; charset=utf-8",
+	        data: usuario,//data i'm sending to the login url
 	        cache: false,
 	        beforeSend: function(){ $("#register").val('Enviando...');},
 	        success: function(data){
