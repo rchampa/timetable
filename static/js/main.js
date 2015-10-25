@@ -69,6 +69,7 @@ $('.register_fields').click(function(){
 	        beforeSend: function(){ $("#register").val('Enviando...');},
 	        success: function(data){
 	            if(data){
+                    localStorage.setItem('token', JSON.stringify(data));
 	            	$("body").load("home.php").hide().fadeIn(1500).delay(6000);
 	            }
 	            else{
