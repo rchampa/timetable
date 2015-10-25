@@ -1,6 +1,5 @@
-from myglobal import app,db,api
-from flask import Flask, request
-from flask_restful import Resource, Api, Resource, reqparse, fields, marshal
+from myglobal import db,api
+from flask_restful import Resource, reqparse, fields, marshal
 from models import Usuario
 from restful.formatResponse import formatOutput
 
@@ -24,5 +23,5 @@ class RegisterAPI(Resource):
         return formatOutput(1003), 201
 
 
-api.add_resource(RegisterAPI, '/users', endpoint = 'users')
+api.add_resource(RegisterAPI, '/registration', endpoint = 'registration')
 

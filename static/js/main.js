@@ -27,13 +27,14 @@ $('.login_fields').click(function(){
 	if($.trim(username).length>0 && $.trim(password).length>0){	
 		$.ajax({
 	        type: "POST",
-	        url: "",//url login -> rhcloud.com
+	        url: "http://timetable-ttv1.rhcloud.com/auth",//url login -> rhcloud.com
 	        data: dataString,//data i'm sending to the login url
 	        cache: false,
 	        beforeSend: function(){ $("#login").val('Connecting...');},
 	        success: function(data){
 	            if(data){
 	            	$("body").load("home.php").hide().fadeIn(1500).delay(6000);
+	            	localStorage.setItem('token', JSON.stringify(data));
 	            }
 	            else{
 	             $('#box').shake();
@@ -47,10 +48,10 @@ $('.login_fields').click(function(){
 	return false;
 });
 
-$('.register_fields').click(function(){
+$('#register').click(function(){
 	var username=$(".register_fields #username").val();
 	var password=$(".register_fields #password").val();
-	var mail=$(".register_fields #mail").val();
+	var email=$(".register_fields #mail").val();
     var dataString = 'username='+username+'&password='+password+'&mail='+mail;
 
     var usuario = {
@@ -69,7 +70,7 @@ $('.register_fields').click(function(){
 	        beforeSend: function(){ $("#register").val('Enviando...');},
 	        success: function(data){
 	            if(data){
-                    localStorage.setItem('token', JSON.stringify(data));
+
 	            	$("body").load("home.php").hide().fadeIn(1500).delay(6000);
 	            }
 	            else{
