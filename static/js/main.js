@@ -62,7 +62,7 @@ $('#register').click(function(){
 	if($.trim(username).length>0 && $.trim(password).length>0 && $.trim(email).length>0){	
 		$.ajax({
 	        type: "POST",
-	        url: "http://timetable-ttv1.rhcloud.com/users",//url login -> rhcloud.com
+	        url: "http://timetable-ttv1.rhcloud.com/registration",//url login -> rhcloud.com
 	        dataType: 'json',
 	        contentType: "application/json; charset=utf-8",
 	        data: usuario,//data i'm sending to the login url
