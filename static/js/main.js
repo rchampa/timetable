@@ -59,11 +59,13 @@ $('#register').click(function(){
             password: password
     }
 
+    jQuery.support.cors = true;
 	if($.trim(username).length>0 && $.trim(password).length>0 && $.trim(email).length>0){	
 		$.ajax({
-	        type: "POST",
+	        method: "POST",
+	        dataType: "json",
+	        crossDomain: true,
 	        url: "http://timetable-ttv1.rhcloud.com/registration",//url login -> rhcloud.com
-	        dataType: 'jsonp',//croos domain
 	        contentType: "application/json; charset=utf-8",
 	        data: usuario,//data i'm sending to the login url
 	        cache: false,

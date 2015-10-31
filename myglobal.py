@@ -28,12 +28,21 @@ from flask_restful import Api
 api = Api(app, catch_all_404s=True)
 
 
+@app.after_request
+def after_request(response):
+  response.headers.add('Access-Control-Allow-Origin', '*')
+  response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+  return response
+
+
 from flask import jsonify
 from flask_jwt import JWT
 from restful.UserPayload import UserPayload
 from models import Usuario
 from _datetime import datetime
 jwt = JWT(app)
+
 
 #autentica al usuario
 @jwt.authentication_handler
@@ -45,6 +54,7 @@ def authenticate(username, password):
     else:
         return None #si se devuelve None se entiende que el las credenciales no son válidas
 
+
 @jwt.error_handler
 def error_handler(e):
     data =  {
@@ -52,6 +62,7 @@ def error_handler(e):
                 "message":e.error+" "+e.description
             }
     return jsonify(data), 400
+
 
 @jwt.payload_handler
 def make_payload(user):
@@ -61,6 +72,7 @@ def make_payload(user):
         'email': user.email,
         'exp': (datetime.utcnow()+ app.config['JWT_EXPIRATION_DELTA']).isoformat()
     }
+
 
 #Cuando el usuario es autenticado entonces se devuelve su payload
 @jwt.user_handler
