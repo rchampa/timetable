@@ -2,18 +2,29 @@ from myglobal import app,db
 
 from flask import Flask, request, flash, url_for, redirect, \
 render_template, abort, send_from_directory, \
-session, make_response, jsonify
+session, make_response, jsonify, send_file
 
 from myglobal import app
+
 
 @app.route('/')
 def index():
     return 'Hello World!'
 
+
 @app.route('/<path:resource>')
 def serveStaticResource(resource):
     return send_from_directory('static/', resource)
 
+
+@app.route('/login',methods=['GET'])
+def login():
+    return send_file("static/index.html")
+
+
+@app.route('/home',methods=['GET'])
+def home():
+    return send_file("static/home.html")
 
 from models import Administrador
 
@@ -59,17 +70,17 @@ def prueba2():
 
   return salida 
 
-@app.route('/home')
-def home():
- 
-  if 'email' not in session:
-    return redirect(url_for('signin'))
- 
-  user = Administrador.query.filter_by(email = session['email']).first()
- 
-  if user is None:
-    return redirect(url_for('signin'))
-  else:
-    return render_template('home.html')
+# @app.route('/home')
+# def home():
+#
+#   if 'email' not in session:
+#     return redirect(url_for('signin'))
+#
+#   user = Administrador.query.filter_by(email = session['email']).first()
+#
+#   if user is None:
+#     return redirect(url_for('signin'))
+#   else:
+#     return render_template('home.html')
 
 

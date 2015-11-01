@@ -19,22 +19,31 @@ $('input[type="text"],input[type="password"]').keyup(function(){
   }
 });
 
-$('.login_fields').click(function(){
+$('#login').click(function(){
 	var username=$(".login_fields #username").val();
 	var password=$(".login_fields #password").val();
     var dataString = 'username='+username+'&password='+password;
+
+    var usuario = {
+            username: username,
+            password: password
+    }
 
 	if($.trim(username).length>0 && $.trim(password).length>0){	
 		$.ajax({
 	        type: "POST",
 	        url: "http://timetable-ttv1.rhcloud.com/auth",//url login -> rhcloud.com
-	        data: dataString,//data i'm sending to the login url
+	        data: JSON.stringify(usuario),
+	        contentType: "application/json; charset=utf-8",
 	        cache: false,
 	        beforeSend: function(){ $("#login").val('Connecting...');},
 	        success: function(data){
 	            if(data){
-	            	$("body").load("home.php").hide().fadeIn(1500).delay(6000);
-	            	localStorage.setItem('token', JSON.stringify(data));
+	                var token = data['token'];
+	            	localStorage.setItem('token', token);
+	            	//para recuperar el token: var token = localStorage.getItem('token');
+	            	$("body").load("login").hide().fadeIn(1500).delay(6000);
+	            	window.location.replace("http://timetable-ttv1.rhcloud.com/home");
 	            }
 	            else{
 	             $('#box').shake();
@@ -59,29 +68,36 @@ $('#register').click(function(){
             password: password
     }
 
-    jQuery.support.cors = true;
 	if($.trim(username).length>0 && $.trim(password).length>0 && $.trim(email).length>0){	
 		$.ajax({
 	        method: "POST",
 	        dataType: "json",
-	        crossDomain: true,
 	        url: "http://timetable-ttv1.rhcloud.com/registration",//url login -> rhcloud.com
 	        contentType: "application/json; charset=utf-8",
-	        data: usuario,//data i'm sending to the login url
+	        data: JSON.stringify(usuario),//data i'm sending to the login url
 	        cache: false,
 	        beforeSend: function(){ $("#register").val('Enviando...');},
 	        success: function(data){
 	            if(data){
-
-	            	$("body").load("home.php").hide().fadeIn(1500).delay(6000);
+                    var code = data['code'];
+                    var message = data['message'];
+                    if(code==1003){
+	            	    $("body").load("home.php").hide().fadeIn(1500).delay(6000);
+                        //$('#back-to-login').click()
+	            	}
+	            	else{
+                        $("#register").val('Enviar')
+                        $("#error").html("<span style='color:#cc0000'>Error:</span> Se produjo un error, inténtelo más tarde. ");
+	            	}
 	            }
 	            else{
-				 $("#register").val('Enviar')
-				 $("#error").html("<span style='color:#cc0000'>Error:</span> Se produjo un error, inténtelo más tarde. ");
+				    $("#register").val('Enviar')
+				    $("#error").html("<span style='color:#cc0000'>Error:</span> Se produjo un error, inténtelo más tarde. ");
 	            }
 	        },
             error:function(){
-                 alert("Error");
+                 $("#register").val('Enviar')
+				 $("#error").html("<span style='color:#cc0000'>Error:</span> Se produjo un error, inténtelo más tarde. ");
             }
 	    });
 	}

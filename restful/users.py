@@ -15,6 +15,7 @@ users_fields = {
 }
 
 class UsuarioAPI(Resource):
+    decorators = [jwt_required()]
     def get(self, usuario_id):
         usuario = Usuario.query.filter_by(id_usuario=usuario_id).first()
         if usuario is not None:
@@ -24,6 +25,7 @@ class UsuarioAPI(Resource):
             return formatOutput(1002)
 
 api.add_resource(UsuarioAPI, '/users/<int:usuario_id>', endpoint = 'user')
+
 
 class UsuariosAPI(Resource):
 
